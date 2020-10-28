@@ -1,8 +1,9 @@
 import numpy as np
 import copy
-from fractions import Fraction
+# from fractions import Fraction
+# Make sure we don't need this before deleting
 
-__all__ = ['gauss']
+__all__ = ['gauss', 'matmul', 'zeromat']
 
 
 def gauss(a, b):
@@ -45,7 +46,7 @@ def gauss(a, b):
     b = copy.deepcopy(b)
     n = len(a)
     p = len(b[0])
-    det = np.ones(1, dtype=np.int32)
+    det = np.ones(1)
     for i in range(n - 1):
         k = i
         for j in range(i + 1, n):
@@ -75,17 +76,104 @@ def gauss(a, b):
     return det, b
 
 
-def matmul(a, b): 
-    #from IPython import embed; embed()
-    n, p = len(a), len(a[0])
-    p1, q = len(b), len(b[0])
-    if p != p1:
+def matmul(a, b):
+    """
+    Matrix product of matrix a and  matrix b.
+
+    Parameters
+    ----------
+    a : np.array or list of lists
+        'n x m' array
+    b : np. array or list of lists
+        'm x l' array
+
+    Returns
+    -------
+    out : ndarray
+        The matrix product of the inputs.
+
+    Raises
+    ------
+    ValueError
+        If the number of columns of `a` is not the same as
+        the number of rows `b`.
+
+    Notes
+    -----
+    The output dimension depends on the dimensions of the input.
+
+    - For input matrices a = n x m and b = m x l, the output matrix will have
+      dimensions n x l.
+
+    Examples
+    --------
+    For 2-D arrays:
+
+    >>> a = np.array([[1, 2],
+    ...               [3, 4]])
+    >>> b = np.array([[5, 1],
+    ...               [6, 2]])
+    >>> matmul(a, b)
+    array([[4, 1],
+           [2, 2]])
+    For a 2-D array and 1-D array:
+    >>> a = np.array([[1, 2],
+    ...               [3, 4]])
+    >>> b = np.array([5, 6])
+    >>> matmul(a, b)
+    array([17, 39])
+    """
+    a = np.array(a)
+    b = np.array(b)
+    # Simplify this                        ##### Remove Line  ##########
+    if a.ndim == 1:
+        n = 1
+        p = a.shape[0]
+    else:
+        n, p = a.shape
+    if b.ndim == 1:
+        p1 = 1
+        q = b.shape[0]
+    else:
+        p1, q = b.shape
+    if p != q:
         raise ValueError("Incompatible dimensions")
-    c = zeromat(n, q)
-    for i in range(n):
-        for j in range(q):
-            c[i][j] = sum(a[i][k]*b[j][k] for k in range(p))
+    if b.ndim == 1:
+        c = zeromat((n,))
+        for i in range(n):
+            c[i] = sum(a[i][k]*b[k] for k in range(p))
+    else:
+        c = zeromat((n, q))
+        for i in range(n):
+            for j in range(q):
+                c[i][j] = sum(a[i][k]*b[k][j] for k in range(p))
     return c
 
-def zeromat(p, q):
-    return [[0]*q for i in range(p)]
+
+def zeromat(shape):
+    """
+    Returns an array with dimension shape, filled with zeros.
+
+    Parameters
+    ----------
+    shape : tuple
+        Shape of output matrix
+
+    Returns
+    -------
+    out : list of lists
+        Matrix with dimension p x q
+
+    Examples
+    --------
+    >>> zeromat((2, 3))
+    [[0, 0, 0], [0, 0, 0]]
+    >>> zeromat((1, 3))
+    [[0, 0, 0]]
+    >>> zeromat((2, 1))
+    [[0], [0]]
+    """
+    if len(shape) == 1:
+        return [0]*shape[0]
+    else:
+        return [[0]*shape[1] for i in range(shape[0])]
