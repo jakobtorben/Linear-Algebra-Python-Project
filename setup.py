@@ -1,4 +1,6 @@
-from setuptools import setup, find_packages
+with open('requirements.txt') as f:
+    requires = f.read().splitlines()
+    print(requires)
 
 try:
     from setuptools import setup
@@ -13,5 +15,5 @@ setup(name='acse_la',
       url='https://github.com/acse-2020',
       author="Imperial College London",
       author_email='rhodri.nelson@imperial.ac.uk',
-      #packages=['acse_la'],
-      packages=find_packages())
+      packages=['acse_la'],
+      install_requires=requires)
