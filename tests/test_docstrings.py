@@ -1,6 +1,5 @@
 from importlib import import_module
 
-import pytest
 import doctest
 
 

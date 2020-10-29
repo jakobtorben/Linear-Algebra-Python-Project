@@ -184,4 +184,3 @@ def zeromat(shape):
         return [0]*shape[0]
     else:
         return [[0]*shape[1] for i in range(shape[0])]
-
