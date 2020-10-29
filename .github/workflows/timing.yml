@@ -34,6 +34,8 @@ jobs:
 
     - name: push changes to repo
       run: |
+        git config --global user.email "jrt3817@ic.ac.uk"
+        git config --global user.name "acse-jrt3817"
         git add results/timings.txt
         git commit -m "Update timings.txt"
         git push
