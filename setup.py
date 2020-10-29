@@ -1,3 +1,4 @@
+from setuptools import setup, find_packages
 
 try:
     from setuptools import setup
@@ -12,4 +13,5 @@ setup(name='acse_la',
       url='https://github.com/acse-2020',
       author="Imperial College London",
       author_email='rhodri.nelson@imperial.ac.uk',
-      packages=['acse_la'])
+      #packages=['acse_la'],
+      packages=find_packages())
