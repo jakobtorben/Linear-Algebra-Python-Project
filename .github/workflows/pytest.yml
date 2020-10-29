@@ -59,4 +59,4 @@ jobs:
 
     - name: Test with pytest
       run: |
-        $RUN_CMD pytest $TESTS
+        $RUN_CMD python -m pytest $TESTS
