@@ -58,5 +58,5 @@ jobs:
         pip install -e .
 
     - name: Test with pytest
-      run: |
-        $RUN_CMD pytest $TESTS
+      run: pytest $TESTS
+      shell: bash
