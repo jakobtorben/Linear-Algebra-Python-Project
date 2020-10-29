@@ -33,8 +33,10 @@ def gauss(a, b):
     >>> Det, Ainv = gauss(A, I)
     >>> Det
     3.0
-    >>> Ainv
-    [[2.0, 1.0, 1.0], [1.3333333333333333, 1.0, 0.6666666666666666], [1.0, 1.0, 1.0]]
+    >>> Ainv # doctest: +NORMALIZE_WHITESPACE
+    [[2.0, 1.0, 1.0],
+    [1.3333333333333333, 1.0, 0.6666666666666666],
+    [1.0, 1.0, 1.0]]
 
     Notes
     -----
@@ -56,7 +58,11 @@ def gauss(a, b):
             det = -det
 
         for j in range(i + 1, n):
-            t = a[j][i]/a[i][i]
+            try:
+                t = a[j][i]/a[i][i]
+            except ZeroDivisionError:
+                raise ValueError("Non-invertible matrix")
+
             for k in range(i + 1, n):
                 a[j][k] -= t*a[i][k]
             for k in range(p):
@@ -67,7 +73,10 @@ def gauss(a, b):
             t = a[i][j]
             for k in range(p):
                 b[i][k] -= t*b[j][k]
-        t = 1/a[i][i]
+        try:
+            t = 1/a[i][i]
+        except ZeroDivisionError:
+            raise ValueError("Non-invertible matrix")
         det *= a[i][i]
         for j in range(p):
             b[i][j] *= t
@@ -175,3 +184,4 @@ def zeromat(shape):
         return [0]*shape[0]
     else:
         return [[0]*shape[1] for i in range(shape[0])]
+
