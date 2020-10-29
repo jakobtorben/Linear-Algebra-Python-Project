@@ -29,7 +29,7 @@ jobs:
            python38-ubuntu2004,
            python37-macOS,
            python37-Windows-Server-2019
-        ]
+           ]
         include:
         - name: python38-ubuntu2004
           python-version: 3.8
@@ -37,36 +37,26 @@ jobs:
 
         - name: python37-macOs
           python-version: 3.7
-          os: macos-latest
+          os: macos-11.0
 
-        - name: python37-macOs
+        - name: python37-Windows-Server-2019
           python-version: 3.7
-          os: macos-latest
+          os: windows-2019
           
     steps:
-    - name: Checkout simple_functions
+    - name: Checkout acse-1-assessment-3-acse-jrt3817
       uses: actions/checkout@v2
-
-    - name: Set test directory
-      run : |
-        echo "::set-env name=TESTS::tests/"
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+        
     - name: Install dependencies
-      if: matrix.os != 'macos-latest'
       run: |
-        sudo apt-get install python3-setuptools -y
-        pip3 install --upgrade pip
-        pip3 install -e .
-        pip3 install -r requirements.txt
-    - name: Install dependencies mac-os
-      if: matrix.os == 'macos-latest'
-      run: |
-        wget https://bitbucket.org/pypg/setuptools/raw/bootstrap/ez_setup.py -O - | python
-        pip3 install --upgrade pip
-        pip3 install -e .
-        pip3 install -r requirements.txt
-    - name: Set a run prefix
-      run : |
-        echo "::set-env name=RUN::python3 -m"
+        pip install --upgrade pip
+        pip install -e .
+
     - name: Test with pytest
       run: |
-        $RUN pytest $TESTS
+        $RUN_CMD pytest $TESTS
