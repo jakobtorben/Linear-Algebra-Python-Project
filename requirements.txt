@@ -1,5 +1,5 @@
-flake8
+flake8>=2.1.0
 pytest
 ipython
-numpy
+numpy>1.16
 sphinx
