@@ -34,9 +34,7 @@ def gauss(a, b):
     >>> Det
     3.0
     >>> Ainv
-    [[2.0, 1.0, 1.0],
-    [1.3333333333333333, 1.0, 0.6666666666666666],
-    [1.0, 1.0, 1.0]]
+    [[2.0, 1.0, 1.0], [1.3333333333333333, 1.0, 0.6666666666666666], [1.0, 1.0, 1.0]]
 
     Notes
     -----
@@ -46,7 +44,7 @@ def gauss(a, b):
     b = copy.deepcopy(b)
     n = len(a)
     p = len(b[0])
-    det = np.ones(1)
+    det = 1.
     for i in range(n - 1):
         k = i
         for j in range(i + 1, n):
@@ -89,7 +87,7 @@ def matmul(a, b):
 
     Returns
     -------
-    out : ndarray
+    out : list of lists
         The matrix product of the inputs.
 
     Raises
@@ -114,14 +112,14 @@ def matmul(a, b):
     >>> b = np.array([[5, 1],
     ...               [6, 2]])
     >>> matmul(a, b)
-    array([[4, 1],
-           [2, 2]])
+    [[17, 5], [39, 11]]
+
     For a 2-D array and 1-D array:
     >>> a = np.array([[1, 2],
     ...               [3, 4]])
     >>> b = np.array([5, 6])
     >>> matmul(a, b)
-    array([17, 39])
+    [17, 39]
     """
     a = np.array(a)
     b = np.array(b)
