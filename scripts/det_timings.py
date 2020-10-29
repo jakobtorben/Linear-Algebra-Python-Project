@@ -27,8 +27,7 @@ if __name__ == '__main__':
     fmt = '%-3d', '%-1.1f', '%-1.1f', '%-1.1f'
     header = 'Mat. dim   gauss t(s)  linalg t(s) my impl t(s)'
     filename = os.path.join("results", "timings.txt")
-    np.savetxt(filename, timings, header=header, comments='',
-                                fmt=fmt, delimiter='\t       ')
+    np.savetxt(filename, timings,
+               header=header, comments='', fmt=fmt, delimiter='\t       ')
 
     # Make method for sparse as well ( maybe triangular)
-    
