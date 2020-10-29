@@ -16,24 +16,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-        - name: Checkout acse-1-assessment-3-acse-jrt3817
-            uses: actions/checkout@v2
-        
-        - name: Set up Python 3.8
-            uses: actions/setup-python@v1
-            with:
-                python-version: 3.8
+    - name: Checkout acse-1-assessment-3-acse-jrt3817
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
             
-        - name: Install dependencies
-            run: |
-            pip install --upgrade pip
-            pip install -e .
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -e .
 
-        - name: Time functions
-          run python scripts/det_timings.py
+    - name: Time functions
+        run python scripts/det_timings.py
 
-        - name: push changes to repo
-        run: |
-          git add results/timings.txt
-          git commit -m "Update timings.txt"
-          git push
+    - name: push changes to repo
+      run: |
+        git add results/timings.txt
+        git commit -m "Update timings.txt"
+        git push
