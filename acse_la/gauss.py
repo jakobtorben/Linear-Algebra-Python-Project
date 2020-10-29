@@ -46,23 +46,25 @@ def gauss(a, b):
     b = copy.deepcopy(b)
     n = len(a)
     p = len(b[0])
-    det = 1.
+    det = 1
     for i in range(n - 1):
         k = i
         for j in range(i + 1, n):
             if abs(a[j][i]) > abs(a[k][i]):
                 k = j
         if k != i:
-            a[i], a[k] = a[k], a[i]
-            b[i], b[k] = b[k], b[i]
+            a_i_temp = copy.deepcopy(a[i])
+            a[i], a[k] = a[k], a_i_temp
+            b_i_temp = copy.deepcopy(b[i])
+            b[i], b[k] = b[k], b_i_temp
             det = -det
 
         for j in range(i + 1, n):
             try:
                 t = a[j][i]/a[i][i]
             except ZeroDivisionError:
-                raise ValueError("Non-invertible matrix")
-
+                return 0, None
+                
             for k in range(i + 1, n):
                 a[j][k] -= t*a[i][k]
             for k in range(p):
@@ -76,7 +78,8 @@ def gauss(a, b):
         try:
             t = 1/a[i][i]
         except ZeroDivisionError:
-            raise ValueError("Non-invertible matrix")
+            return 0, None
+
         det *= a[i][i]
         for j in range(p):
             b[i][j] *= t

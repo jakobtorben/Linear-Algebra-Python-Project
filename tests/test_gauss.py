@@ -26,6 +26,7 @@ class TestGauss(object):
     def test_gauss(self, a, b, dete, xe):
         """ Test the gauss function """
         det, x = gauss(a, b)
+        print(det, x)
 
         assert np.isclose(det, dete)
         assert np.allclose(x, xe)
@@ -35,9 +36,7 @@ class TestGauss(object):
         ([[1, 2], [3, 4]], [5, 6], [17, 39])
     ])
     def test_matmul(self, a, b, exp):
-        print(a, b)
         M = matmul(a, b)
-        print(M)
         assert (M == exp)
 
     @pytest.mark.parametrize('p, q, exp', [
