@@ -30,6 +30,7 @@ jobs:
         pip install -e .
 
     - name: Time functions
+      run: |
         run python scripts/det_timings.py
 
     - name: push changes to repo
