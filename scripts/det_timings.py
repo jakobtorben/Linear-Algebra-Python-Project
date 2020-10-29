@@ -17,7 +17,6 @@ if __name__ == '__main__':
     for i, size in enumerate(sizes):
         M = np.random.rand(size, size)
         b = np.eye(size)
-        #b = np.random.rand(size, 1)
 
         gauss_t = Timer(lambda: gauss(M, b))
         timings[i, 1] = gauss_t.timeit(number=2)
@@ -29,6 +28,7 @@ if __name__ == '__main__':
     header = 'Mat. dim   gauss t(s)  linalg t(s) my impl t(s)'
     filename = os.path.join("results", "timings.txt")
     np.savetxt(filename, timings, header=header, comments='',
-                                             fmt=fmt, delimiter='\t       ')
+                                fmt=fmt, delimiter='\t       ')
 
     # Make method for sparse as well ( maybe triangular)
+    

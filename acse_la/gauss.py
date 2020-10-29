@@ -64,7 +64,7 @@ def gauss(a, b):
                 t = a[j][i]/a[i][i]
             except ZeroDivisionError:
                 return 0, None
-                
+
             for k in range(i + 1, n):
                 a[j][k] -= t*a[i][k]
             for k in range(p):
