@@ -8,10 +8,9 @@ Welcome to acse_la's documentation!
 A Gaussian Elimination routine
 ------------------------------
 
-This package implements Gaussian elimination [1]_ for list of lists and :obj:`numpy.ndarray` objects, along with hand-written matrix multiplication.
+This package implements Gaussian elimination [1] for list of lists and :obj:`numpy.ndarray` objects, along with hand-written matrix multiplication.
 
 See :func:`acse_la.gauss` and :func:`acse_la.gauss.matmul` for more information.
-
 
 
 .. automodule:: acse_la.gauss
@@ -24,6 +23,7 @@ A determinant routine
 
 .. automodule:: acse_la.det
   :members: det
+  :noindex: det
 
 
 Citation
