@@ -20,7 +20,7 @@ import numpy as np
 from acse_la import gauss, det
 
 
-sizes = [10, 100, 200]  # , 400]#, 500]
+sizes = [10, 100]#, 200]  # , 400]#, 500]
 n_times = 1
 timings = np.zeros((len(sizes), 4))
 timings[:, 0] = sizes
@@ -42,4 +42,4 @@ fmt = '%d', '%3g', '%3g', '%3g'
 header = 'Mat. size  gauss t(s)      linalg t(s)     own t(s)'
 filename = os.path.join("results", "timings.txt")
 np.savetxt(filename, timings,
-           header=header, comments='', fmt=fmt, delimiter='\t      ')
+           header=header, comments='', fmt=fmt, delimiter='\t')

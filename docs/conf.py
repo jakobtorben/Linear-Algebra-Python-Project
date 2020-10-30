@@ -12,3 +12,6 @@ source_suffix = '.rst'
 master_doc = 'index'
 exclude_patterns = ['_build']
 autoclass_content = "both"
+author = u'Jakob Torben'
+language = 'en'
+html_theme = 'sphinx_rtd_theme'

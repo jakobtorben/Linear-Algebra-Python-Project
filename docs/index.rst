@@ -20,12 +20,18 @@ See :func:`acse_la.gauss` and :func:`acse_la.gauss.matmul` for more information.
   :noindex: gauss
 
 A determinant routine
-------------------------------
+---------------------
+
+.. automodule:: acse_la
+  :members: det
 
 .. automodule:: acse_la.det
   :members: det
-  
-  
-.. rubric:: References
-.. [1] https://mathworld.wolfram.com/GaussianElimination.html
-.. [2] Propp, J. G., Wilson, D. B. 'Numerical Recipes', Cambridge University Press. (1996)
+  :noindex: gauss
+
+
+Citation
+--------
+
+[1] https://mathworld.wolfram.com/GaussianElimination.html
+[2] Propp, J. G., Wilson, D. B. 'Numerical Recipes', Cambridge University Press. (1996)
