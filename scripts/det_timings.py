@@ -38,8 +38,8 @@ for i, size in enumerate(sizes):
     det_t = Timer(lambda: det(M))
     timings[i, 3] = det_t.timeit(number=n_times)/n_times
 
-fmt = '%d', '%3g', '%3g', '%3g'
-header = 'Mat. size  gauss t(s)      linalg t(s)     own t(s)'
+fmt = '%-d', '%-4g', '%-4g', '%-4g'
+header = 'Mat. size gauss t(s)      linalg t(s)     own t(s)'
 filename = os.path.join("results", "timings.txt")
 np.savetxt(filename, timings,
-           header=header, comments='', fmt=fmt, delimiter='\t')
+           header=header, comments='', fmt=fmt, delimiter='\t      ')

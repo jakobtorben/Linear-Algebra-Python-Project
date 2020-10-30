@@ -38,7 +38,7 @@ jobs:
         sphinx-build -b html . _build/html
         sphinx-build -b latex . _build/latex
         cd _build/latex
-        pdflatex acse_la.tex
+        pdflatex -output-directory=../../ acse_la.tex
 
     - name: push changes to repo
       run: |
