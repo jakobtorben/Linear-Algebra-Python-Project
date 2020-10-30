@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>acse_la &#8212; ACSE_la  documentation</title>
+    <title>Welcome to acse_la’s documentation! &#8212; ACSE_la  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -31,11 +31,12 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="acse-la">
-<h1>acse_la<a class="headerlink" href="#acse-la" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="welcome-to-acse-la-s-documentation">
+<h1>Welcome to acse_la’s documentation!<a class="headerlink" href="#welcome-to-acse-la-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">acse_la</span></code> is a linear algebra library that implements Gaussian Elimination, matrix multiplication and calculating the determinant.</p>
 <div class="section" id="a-gaussian-elimination-routine">
 <h2>A Gaussian Elimination routine<a class="headerlink" href="#a-gaussian-elimination-routine" title="Permalink to this headline">¶</a></h2>
-<p>This package implements Gaussian elimination <a class="footnote-reference brackets" href="#id2" id="id1">1</a> for <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> objects, along with hand-written matrix multiplication.</p>
+<p>This package implements Gaussian elimination <a class="footnote-reference brackets" href="#id2" id="id1">1</a> for list lists and <code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.ndarray</span></code> objects, along with hand-written matrix multiplication.</p>
 <p>See <a class="reference internal" href="#acse_la.gauss" title="acse_la.gauss"><code class="xref py py-func docutils literal notranslate"><span class="pre">acse_la.gauss()</span></code></a> and <code class="xref py py-func docutils literal notranslate"><span class="pre">acse_la.gauss.matmul()</span></code> for more information.</p>
 <span class="target" id="module-acse_la"></span><dl class="py function">
 <dt id="acse_la.gauss">
@@ -74,11 +75,6 @@ If <cite>b</cite> is the identity, then <cite>x</cite> is the inverse of <cite>a
 <p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">https://en.wikipedia.org/wiki/Gaussian_elimination</a> for further details.</p>
 </dd></dl>
 
-<span class="target" id="module-acse_la.det"></span><dl class="field-list simple">
-<dt class="field-odd">members</dt>
-<dd class="field-odd"><p>det</p>
-</dd>
-</dl>
 <dl class="py function">
 <dt>
 <code class="sig-prename descclassname">acse_la.gauss.</code><code class="sig-name descname">matmul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span></dt>
@@ -151,10 +147,51 @@ dimensions n x l.</p></li>
 </div>
 </dd></dl>
 
+</div>
+<div class="section" id="module-acse_la.det">
+<span id="a-determinant-routine"></span><h2>A determinant routine<a class="headerlink" href="#module-acse_la.det" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="acse_la.det.det">
+<code class="sig-prename descclassname">acse_la.det.</code><code class="sig-name descname">det</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">A</span></em><span class="sig-paren">)</span><a class="headerlink" href="#acse_la.det.det" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the determinant of a matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>A</strong> (<em>np.array</em><em> or </em><em>list of lists</em>) – ‘N x N’ matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>out</strong> – The determinant of the matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If input is not square matrix</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The determinant is computed with LU decomposition, using Crout’s method.
+For further details see: Propp, J. G., Wilson, D. B. ‘Numerical Recipes’,
+Cambridge University Press. (1996).</p></li>
+<li><p>Pivoting is not yet implemented. Matrices with zero entries along
+diagonal can have unstable behaviour.</p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">det</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+<span class="go">-360.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">det</span><span class="p">([[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.2</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">]])</span>
+<span class="go">-4.35</span>
+</pre></div>
+</div>
+</dd></dl>
+
 <p class="rubric">References</p>
 <dl class="footnote brackets">
 <dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p><a class="reference external" href="https://mathworld.wolfram.com/GaussianElimination.html">https://mathworld.wolfram.com/GaussianElimination.html</a></p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">2</span></dt>
+<dd><p>Propp, J. G., Wilson, D. B. ‘Numerical Recipes’, Cambridge University Press. (1996)</p>
 </dd>
 </dl>
 </div>

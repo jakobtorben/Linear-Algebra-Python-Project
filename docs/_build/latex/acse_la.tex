@@ -89,6 +89,8 @@
 \phantomsection\label{\detokenize{index::doc}}
 
 
+\sphinxcode{\sphinxupquote{acse\_la}} is a linear algebra library that implements Gaussian Elimination, matrix multiplication and calculating the determinant.
+
 
 \chapter{A Gaussian Elimination routine}
 \label{\detokenize{index:a-gaussian-elimination-routine}}
@@ -96,7 +98,7 @@ This package implements Gaussian elimination %
 \begin{footnote}[1]\sphinxAtStartFootnote
 \sphinxurl{https://mathworld.wolfram.com/GaussianElimination.html}
 %
-\end{footnote} for \sphinxcode{\sphinxupquote{numpy.ndarray}} objects, along with hand\sphinxhyphen{}written matrix multiplication.
+\end{footnote} for list lists and \sphinxcode{\sphinxupquote{numpy.ndarray}} objects, along with hand\sphinxhyphen{}written matrix multiplication.
 
 See {\hyperref[\detokenize{index:acse_la.gauss}]{\sphinxcrossref{\sphinxcode{\sphinxupquote{acse\_la.gauss()}}}}} and \sphinxcode{\sphinxupquote{acse\_la.gauss.matmul()}} for more information.
 
@@ -144,11 +146,6 @@ See \sphinxurl{https://en.wikipedia.org/wiki/Gaussian\_elimination} for further 
 
 \end{fulllineitems}
 
-\phantomsection\label{\detokenize{index:module-acse_la.det}}\index{module@\spxentry{module}!acse\_la.det@\spxentry{acse\_la.det}}\index{acse\_la.det@\spxentry{acse\_la.det}!module@\spxentry{module}}\begin{quote}\begin{description}
-\item[{members}] \leavevmode
-det
-
-\end{description}\end{quote}
 
 
 \begin{fulllineitems}
@@ -231,6 +228,51 @@ list of lists
 \PYG{g+go}{[[0, 0, 0]]}
 \PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{zeromat}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
 \PYG{g+go}{[[0], [0]]}
+\end{sphinxVerbatim}
+
+\end{fulllineitems}
+
+
+
+\chapter{A determinant routine}
+\label{\detokenize{index:module-acse_la.det}}\label{\detokenize{index:a-determinant-routine}}\index{module@\spxentry{module}!acse\_la.det@\spxentry{acse\_la.det}}\index{acse\_la.det@\spxentry{acse\_la.det}!module@\spxentry{module}}\index{det() (in module acse\_la.det)@\spxentry{det()}\spxextra{in module acse\_la.det}}
+
+\begin{fulllineitems}
+\phantomsection\label{\detokenize{index:acse_la.det.det}}\pysiglinewithargsret{\sphinxcode{\sphinxupquote{acse\_la.det.}}\sphinxbfcode{\sphinxupquote{det}}}{\emph{\DUrole{n}{A}}}{}
+Compute the determinant of a matrix.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{A}} (\sphinxstyleliteralemphasis{\sphinxupquote{np.array}}\sphinxstyleliteralemphasis{\sphinxupquote{ or }}\sphinxstyleliteralemphasis{\sphinxupquote{list of lists}}) \textendash{} ‘N x N’ matrix
+
+\item[{Returns}] \leavevmode
+\sphinxstylestrong{out} \textendash{} The determinant of the matrix.
+
+\item[{Return type}] \leavevmode
+float
+
+\item[{Raises}] \leavevmode
+\sphinxstyleliteralstrong{\sphinxupquote{ValueError}} \textendash{} If input is not square matrix
+
+\end{description}\end{quote}
+\subsubsection*{Notes}
+\begin{itemize}
+\item {} 
+The determinant is computed with LU decomposition, using Crout’s method.
+For further details see: Propp, J. G., Wilson, D. B. ‘Numerical Recipes’,
+Cambridge University Press. (1996).
+
+\item {} 
+Pivoting is not yet implemented. Matrices with zero entries along
+diagonal can have unstable behaviour.
+
+\end{itemize}
+\subsubsection*{Examples}
+
+\begin{sphinxVerbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{det}\PYG{p}{(}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{8}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{g+go}{\PYGZhy{}360.0}
+\PYG{g+gp}{\PYGZgt{}\PYGZgt{}\PYGZgt{} }\PYG{n}{det}\PYG{p}{(}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mf}{0.5}\PYG{p}{,} \PYG{l+m+mf}{1.5}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mf}{4.2}\PYG{p}{,} \PYG{l+m+mf}{3.9}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{g+go}{\PYGZhy{}4.35}
 \end{sphinxVerbatim}
 
 \end{fulllineitems}
