@@ -1,7 +1,6 @@
-import numpy as np
 import copy
-# from fractions import Fraction
-# Make sure we don't need this before deleting
+
+import numpy as np
 
 __all__ = ['gauss', 'matmul', 'zeromat']
 
@@ -135,7 +134,6 @@ def matmul(a, b):
     """
     a = np.array(a)
     b = np.array(b)
-    # Simplify this                        ##### Remove Line  ##########
     if a.ndim == 1:
         n = 1
         p = a.shape[0]

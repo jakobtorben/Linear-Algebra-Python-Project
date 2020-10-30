@@ -1,3 +1,17 @@
+"""Determinant calculation timer
+
+This script allows the user to time different methods to calculate the
+determinant of matrices.
+
+Methods tested:
+- Gaussian elemination
+- numpy.linalg.det (Using  LU factorisation using the LAPACK routine)
+- My own implementation using LU decomposition (Crout's method)
+
+The methods are tested on random dense square matrices with size 10 to 500.
+The result are written to a results/timings.txt.
+"""
+
 import os
 from timeit import Timer
 
@@ -6,7 +20,7 @@ import numpy as np
 from acse_la import gauss, det
 
 
-sizes = [10, 100, 200] # , 400]#, 500]
+sizes = [10, 100, 200]  # , 400]#, 500]
 n_times = 1
 timings = np.zeros((len(sizes), 4))
 timings[:, 0] = sizes

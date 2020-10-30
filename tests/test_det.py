@@ -6,8 +6,7 @@ from acse_la import det
 
 class TestDet(object):
     """
-    Class for testing the Gaussian elimination algorithm Gauss
-    and its associated functions.
+    Class for testing the determinant calculation that uses LU decomposition.
     """
     M = np.random.rand(100, 100)
 
@@ -19,6 +18,6 @@ class TestDet(object):
         (M, np.linalg.det(M))
     ])
     def test_det(self, a, dete):
-        """ Test the gauss function """
+        """ Test the det function """
         detc = det(a)
         assert np.isclose(detc, dete)

@@ -5,6 +5,43 @@ __all__ = ['det']
 
 
 def det(A):
+    """
+    Compute the determinant of a matrix.
+
+    Parameters
+    ----------
+    A : np.array or list of lists
+        'N x N' matrix
+
+    Returns
+    -------
+    out : float
+        The determinant of the matrix.
+
+    Raises
+    ------
+    ValueError
+        If input is not square matrix
+
+    Notes
+    -----
+    - The determinant is computed with LU decomposition, using Crout's method.
+      For further details see: Propp, J. G., Wilson, D. B. 'Numerical Recipes',
+      Cambridge University Press. (1996).
+
+    - Pivoting is not yet implemented. Matrices with zero entries along
+      diagonal can have unstable behaviour.
+
+
+    Examples
+    --------
+    >>> det([[2, 9, 4], [7, 5, 3], [6, 1, 8]])
+    -360.0
+    >>> det([[0.5, 1.5], [4.2, 3.9]])
+    -4.35
+    """
+
+
     A = np.asarray(A, dtype=float)
     if A.shape[0] != A.shape[1]:
         raise ValueError("Not a square NxN matrix")

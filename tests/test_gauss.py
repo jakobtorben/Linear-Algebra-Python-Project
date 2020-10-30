@@ -36,6 +36,7 @@ class TestGauss(object):
         ([[1, 2], [3, 4]], [5, 6], [17, 39])
     ])
     def test_matmul(self, a, b, exp):
+        """Test the matmul function"""
         M = matmul(a, b)
         assert (M == exp)
 
@@ -45,7 +46,6 @@ class TestGauss(object):
         (2, 1, [[0], [0]])
         ])
     def test_zeromat(self, p, q, exp):
+        """Test the zeromat function"""
         M = zeromat(p, q)
-
         assert M == exp
-
