@@ -20,7 +20,7 @@ import numpy as np
 from acse_la import gauss, det
 
 
-sizes = [10, 100]#, 200]  # , 400]#, 500]
+sizes = [10, 100, 200, 400, 500]
 n_times = 1
 timings = np.zeros((len(sizes), 4))
 timings[:, 0] = sizes

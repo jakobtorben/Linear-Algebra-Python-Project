@@ -44,12 +44,12 @@ def det(A):
     if A.shape[0] != A.shape[1]:
         raise ValueError("Not a square NxN matrix")
     N = A.shape[0]
-    
+
     # Set L_ii = 1 (Crout's method)
     L = np.eye(N)
     U = np.zeros((N, N))
 
-    for j in range(N):  # j = 0, 1,..., N-1
+    for j in range(N):
 
         # Avoid zero division
         # Note that this is cheating and is only a workaround
@@ -59,7 +59,7 @@ def det(A):
 
         # Find coefficients for U matrix iteratively
         for i in range(j+1):
-            Bsum =  sum([L[i, k]*U[k, j] for k in range(i)])
+            Bsum = sum([L[i, k]*U[k, j] for k in range(i)])
             U[i, j] = A[i, j] - Bsum
 
         # Find coefficients for L matrix
