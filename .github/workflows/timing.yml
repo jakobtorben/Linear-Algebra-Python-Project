@@ -38,5 +38,6 @@ jobs:
         git config --global user.name "acse-jrt3817"
         git add results/timings.txt
         git commit -m "Update timings.txt"
+        git pull
         git push
         
