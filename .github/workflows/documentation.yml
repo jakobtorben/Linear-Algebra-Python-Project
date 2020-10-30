@@ -44,6 +44,7 @@ jobs:
       run: |
         git config --global user.email "jrt3817@ic.ac.uk"
         git config --global user.name "acse-jrt3817"
+        git pull
         git add docs
         git commit -m "Update documentation"
         git push
