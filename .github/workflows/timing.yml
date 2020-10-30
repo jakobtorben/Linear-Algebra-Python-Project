@@ -39,3 +39,4 @@ jobs:
         git add results/timings.txt
         git commit -m "Update timings.txt"
         git push
+        

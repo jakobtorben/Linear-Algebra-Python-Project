@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from acse_la import gauss, matmul, zeromat
+from acse_la import gauss, matmul, zeromat, det
 
 
 class TestGauss(object):
@@ -45,7 +45,7 @@ class TestGauss(object):
         (2, 1, [[0], [0]])
         ])
     def test_zeromat(self, p, q, exp):
-        shape = (p, q)
-        M = zeromat(shape)
+        M = zeromat(p, q)
 
         assert M == exp
+

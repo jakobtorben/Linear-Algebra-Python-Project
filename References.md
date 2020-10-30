@@ -1,1 +1,2 @@
-1. Nelson, R. B., Lecture 7 notes, "Flake8.yml file in /.github/workflows directory"
+1. Nelson, R. B., Lecture 7 notes, "Flake8.yml file in /.github/workflows directory", Imperial College London. (2020)
+2. Propp, J. G., Wilson, D. B. 'Numerical Recipes', Cambridge University Press. (1996)

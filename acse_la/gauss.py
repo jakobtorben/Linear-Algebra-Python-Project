@@ -149,18 +149,18 @@ def matmul(a, b):
     if p != q:
         raise ValueError("Incompatible dimensions")
     if b.ndim == 1:
-        c = zeromat((n,))
+        c = zeromat(n, 0)
         for i in range(n):
             c[i] = sum(a[i][k]*b[k] for k in range(p))
     else:
-        c = zeromat((n, q))
+        c = zeromat(n, q)
         for i in range(n):
             for j in range(q):
                 c[i][j] = sum(a[i][k]*b[k][j] for k in range(p))
     return c
 
 
-def zeromat(shape):
+def zeromat(a, b):
     """
     Returns an array with dimension shape, filled with zeros.
 
@@ -176,14 +176,14 @@ def zeromat(shape):
 
     Examples
     --------
-    >>> zeromat((2, 3))
+    >>> zeromat(2, 3)
     [[0, 0, 0], [0, 0, 0]]
-    >>> zeromat((1, 3))
+    >>> zeromat(1, 3)
     [[0, 0, 0]]
-    >>> zeromat((2, 1))
+    >>> zeromat(2, 1)
     [[0], [0]]
     """
-    if len(shape) == 1:
-        return [0]*shape[0]
+    if b == 0:
+        return [0]*a
     else:
-        return [[0]*shape[1] for i in range(shape[0])]
+        return [[0]*b for i in range(a)]

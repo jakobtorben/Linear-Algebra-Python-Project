@@ -1,4 +1,6 @@
 acse_la.egg-info/
 .pytest_cache/
 tests/__pycache__/
+docs/__pycache__/
+acse_la/__pycache__/
 .eggs/

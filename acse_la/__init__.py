@@ -1,4 +1,5 @@
 from .gauss import * # noqa
+from .det import det
 
 from pkg_resources import get_distribution, DistributionNotFound
 try:
