@@ -22,4 +22,3 @@ class TestDet(object):
         """ Test the gauss function """
         detc = det(a)
         assert np.isclose(detc, dete)
-

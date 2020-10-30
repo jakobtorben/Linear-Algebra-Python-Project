@@ -41,9 +41,9 @@ jobs:
         pdflatex acse_la.tex
 
     - name: push changes to repo
-        run: |
-          git config --global user.email "jrt3817@ic.ac.uk"
-          git config --global user.name "acse-jrt3817"
-          git add docs
-          git commit -m "Update documentation"
-          git push
+      run: |
+        git config --global user.email "jrt3817@ic.ac.uk"
+        git config --global user.name "acse-jrt3817"
+        git add docs
+        git commit -m "Update documentation"
+        git push

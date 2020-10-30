@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from acse_la import gauss, matmul, zeromat, det
+from acse_la import gauss, matmul, zeromat
 
 
 class TestGauss(object):
